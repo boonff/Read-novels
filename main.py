@@ -1,4 +1,11 @@
-from Novel import Novel
+from noval import Noval
 
-novel = Novel(sign="第三卷", out_path="out/怪人的沙拉碗")
-novel.run("怪人的沙拉碗2.txt", "第三卷")
+if __name__ == "__main__":
+    chapter_sign = r"^\s*[第卷话](?:\d+|[一二三四五六七八九十零〇百千两]+)[章回部节集卷话].*|^\s*(?:\d+|[一二三四五六七八九十零〇百千两]+|[上下]+)[章回部节集卷话](.*)"
+    part_sign = r"(^\s*\d{3}.*)"
+    roll_position = {
+        "怪人的沙拉碗3.txt": "第四卷",
+    }
+
+    novel = Noval(chapter_sign, part_sign, in_path="in\\怪人的沙拉碗", out_path="out\\怪人的沙拉碗")
+    novel.run(roll_position)
