@@ -9,9 +9,9 @@ def edge_tts_string(text, out_path, file_name):
     with open("tts.txt", "w", encoding="utf-8") as file:  # 暂存字符串到tts.txt
         file.write(text)
     lang = "zh-CN-XiaoyiNeural"
-    rate = "+5%"
+    rate = "+0%"
     volume = "+0%"
-    write_media = os.path.join(out_path, file_name + ".wav")
+    write_media = os.path.join(out_path, file_name + ".mp3")
     write_subtitles = os.path.join(out_path, file_name + ".vtt")
     command = [
         "edge-tts",

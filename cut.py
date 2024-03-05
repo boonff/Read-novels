@@ -10,11 +10,14 @@ def chapter_cut(sign, file_path):  # 按照sign划分章节
     # 合并标题和正文
     merged_chapters = {}
     for i in range(0, len(chapters), 2):
-        merged_chapters[chapters[i].strip()] = chapters[i + 1]
+        if chapters[i] is not None:
+            merged_chapters[f"[{i // 2 + 1}]{chapters[i].strip()}"] = chapters[i + 1]
+        else:
+            merged_chapters[f"[{i // 2 + 1}]{chapters[i]}_{i /2}"] = chapters[i + 1]
     # 打印划分后的大致信息
     print("-" * 50 + "划分章节" + "-" * 50)
     for i, (key, value) in enumerate(merged_chapters.items()):
-        print(f"[{i}]{key}")
+        print(f"[{i+1}]{key}")
         print(value[:50])
     return merged_chapters
 
@@ -28,7 +31,9 @@ def part_cut(sign, chapters: dict):  # 按照sign划分“部分”
             part = part[1:]
             part[1] = chapter_name + "。" + part[1]
         else:  # 文章中的第一“部分”可能没有sign，将其添加到part字典(这里没有debug过，可能有bug)
-            m_parts[""] = chapter_name + "。" + part[0] + "。"  # 注意与上面不同，这里需要将标题添加至字典
+            m_parts[""] = (
+                chapter_name + "。" + part[0] + "。"
+            )  # 注意与上面不同，这里需要将标题添加至字典
             part = part[1:]
         # 合并标题和正文
 
