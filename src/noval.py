@@ -1,11 +1,11 @@
 import os
-
+import unicodedata
 import ebooklib
 from ebooklib import epub
+from bs4 import BeautifulSoup
+
 from EdgeTTS import edge_tts_string
 from cut import chapter_cut, part_cut
-from bs4 import BeautifulSoup
-import unicodedata
 
 
 class Noval:
