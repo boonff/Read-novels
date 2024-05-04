@@ -1,4 +1,9 @@
 {
     "editor.suggest.snippetsPreventQuickSuggestions": false,
     "aiXcoder.showTrayIcon": true
+
+    "python.formatting.autoWrap": "off",
+    "[python]": {
+        "editor.wordWrap": "off"
+    }
 }
